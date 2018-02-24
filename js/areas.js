@@ -7,22 +7,6 @@ areas = (function() {
     // Some generic functions for most frequent cases
     // ==============================================
     //
-    // check monster element
-    var checkMonsterElement = function(G, c, elt) {
-        var e = G.areas[c.monster].monsterElement;
-        for(var i=0; i<e.length;i++) {
-            if(e[i]==elt) { return true; }
-        }
-        return false;
-    }
-    // check obstacle element
-    var checkObstacleElement = function(G, c, elt) {
-        var e = G.areas[c.area].obstacleElement;
-        for(var i=0; i<e.length;i++) {
-            if(e[i]==elt) { return true; }
-        }
-        return false;
-    }
     //  Look for existing cells around 'c' containing no monster and no obst.
     var emptyAround = function (G,c) {
         var disp = [];
@@ -76,6 +60,7 @@ areas = (function() {
         G.symbolColor = "#666";
         G.restartGame(msg, "Restart the game");
     };
+    // always move toward the target
     var monsterMoveBasic = function(G,c,tx,ty) {
         var dd = Math.max(Math.abs(c.x-tx), Math.abs(c.y-ty));
         var targets = [c];
@@ -92,6 +77,8 @@ areas = (function() {
         var t = targets[Math.floor(Math.random()*targets.length)];
         return [t.x, t.y];
     };
+    // move toward the target but from time to time (probability z) an
+    // "erratic" move is allowed; this allows the player to flee.
     var monsterMoveErratic = function(z) {
         return function(G,c,tx,ty) {
             var dd = Math.max(Math.abs(c.x-tx), Math.abs(c.y-ty));
@@ -100,6 +87,31 @@ areas = (function() {
                 deathPlayer(G, G.story + G.areas[c.monster].monsterDeath);
             } else {
                 var disp = emptyAround(G,c);
+                if(Math.random() < z) { targets = disp; }
+                else {
+                for(var i=0;i<disp.length;i++) {
+                    var dd2 = Math.max(Math.abs(disp[i].x-tx), Math.abs(disp[i].y-ty));
+                    if (dd2<dd) { dd = dd2; targets = [disp[i]]; }
+                    else if(dd2==dd) { targets.push(disp[i]); }
+                }
+                }
+            }
+            var t = targets[Math.floor(Math.random()*targets.length)];
+            return [t.x, t.y];
+        };
+    };
+    // move toward the target but from time to time (probability z) an
+    // "erratic" move is allowed; this allows the player to flee; furthermore
+    // the monster doesn't leave areas with given numbers
+    var monsterMoveErraticCoward = function(z, ar) {
+        return function(G,c,tx,ty) {
+            var dd = Math.max(Math.abs(c.x-tx), Math.abs(c.y-ty));
+            var targets = [c];
+            if(dd==1) {
+                deathPlayer(G, G.story + G.areas[c.monster].monsterDeath);
+            } else {
+                var disp = emptyAround(G,c).filter(
+                        function (e) { return ar.includes(e.area) });
                 if(Math.random() < z) { targets = disp; }
                 else {
                 for(var i=0;i<disp.length;i++) {
@@ -161,7 +173,7 @@ areas = (function() {
      itemFuncEmpty: function(G, c) { return false; },
      itemPickUp: function(G, c) { return false; },
      itemFuncMonster: function(G, c) {
-         if(checkMonsterElement(G, c, "mammal")) {
+         if(G.areas[c.monster].monsterElement.includes("mammal")) {
              G.destroyMonster(c);
              return true;
          } else { return false; }
@@ -248,7 +260,7 @@ areas = (function() {
      itemFuncEmpty: function(G, c) { return false; },
      itemPickUp: function(G, c) { return false; },
      itemFuncMonster: function(G, c) {
-         if(checkMonsterElement(G, c, "animal")) {
+         if(G.areas[c.monster].monsterElement.includes("animal")) {
              G.destroyMonster(c);
              return true;
          } else { return false; }
@@ -324,7 +336,7 @@ areas = (function() {
      monsterElement: ["animal", "worm"],
      monsterProbability: basicProbability(0.05),
          // TODO: ne s'écarte pas de son territoire
-     monsterMove: monsterMoveErratic(0.25),
+     monsterMove: monsterMoveErraticCoward(0.25, [4, 5]), // TODO
      monsterDeath: "You were killed by a <span class='monsterName'>giant worm</span>!",
      item: "\u25c9",
      itemColor: "#ffbf00",
@@ -336,7 +348,7 @@ areas = (function() {
      itemFuncEmpty: function(G, c) { return false; },
      itemPickUp: function(G, c) { return false; },
      itemFuncMonster: function(G, c) {
-         if(checkMonsterElement(G, c, "animal")) {
+         if(G.areas[c.monster].monsterElement.includes("animal")) {
              G.destroyMonster(c);
              return true;
          } else { return false; }
@@ -344,7 +356,7 @@ areas = (function() {
      itemFuncStandby: function(G) { return false; },
      itemFuncAttacked: function(G, c, cells) { return false; },
      itemFuncObstacle: function(G, c) {
-         if(checkObstacleElement(G, c, "mineral")) {
+         if(G.areas[c.area].obstacleElement.includes("mineral")) {
              c.obstacle = false;
              // TODO in some worlds, an itme is found under the rock
              c.refreshDisplay();
