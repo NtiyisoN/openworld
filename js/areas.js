@@ -293,18 +293,23 @@ areas = (function() {
      monsterKill: "You killed the <span class='monsterName'>giant eel</span>!",
      monsterElement: ["animal", "fish", "snake"],
      monsterProbability: basicProbability(0.0065),
-     monsterMove: monsterMoveErraticCoward(0.015, [3, 6]), // TODO
+     monsterMove: monsterMoveErraticCoward(0.015, [3, 7]), // TODO
      monsterDeath: "You were killed by a <span class='monsterName'>giant eel</span>!",
      item: "\u25ca",
      itemColor: "#099",
      itemBold: "normal",
-     itemName: "Sign of High Water",
-     itemMsg: "You found the <span class='itemName'>sign of High Water</span>!",
+     itemName: "Sign of Deep Water",
+     itemMsg: "You found the <span class='itemName'>sign of Deep Water</span>!",
      itemDesc: "Use it for TODO.", // TODO
      itemProbability: function(G, c) { return 0.0025; },
      itemFuncEmpty: function(G, c) { return false; },
      itemPickUp: function(G, c) { return false; },
-     itemFuncMonster: function(G, c) { return false; },
+     itemFuncMonster: function(G, c) {
+         if(G.areas[c.monster].monsterElement.includes("animal")) {
+             G.destroyMonster(c);
+             return true;
+         } else { return false; }
+     },
      itemFuncStandby: function(G) { return false; },
      itemFuncAttacked: function(G, c, cells) { return false; },
      itemFuncObstacle: function(G, c) { return false; }
@@ -342,7 +347,7 @@ areas = (function() {
      itemBold: "normal",
      itemName: "Sign of Stone",
      itemMsg: "You found the <span class='itemName'>sign of Stone</span>!",
-     itemDesc: "Use it for killing various worms and break stones.",
+     itemDesc: "Use it for killing various creatures and break stones.",
      itemProbability: function(G, c) { return 0.01; },
      itemFuncEmpty: function(G, c) { return false; },
      itemPickUp: function(G, c) { return false; },
@@ -357,7 +362,7 @@ areas = (function() {
      itemFuncObstacle: function(G, c) {
          if(G.areas[c.area].obstacleElement.includes("mineral")) {
              c.obstacle = false;
-             // TODO in some worlds, an itme is found under the rock
+             // TODO in some worlds, an item is found under the rock
              if(c.area == 5) { if (Math.random()<0.125) { c.item = true; } }
              c.refreshDisplay();
              return true;
@@ -389,7 +394,6 @@ areas = (function() {
      monsterKill: "You killed the <span class='monsterName'>giant worm</span>!",
      monsterElement: ["animal", "worm"],
      monsterProbability: basicProbability(0.05),
-         // TODO: ne s'écarte pas de son territoire
      monsterMove: monsterMoveErraticCoward(0.25, [4, 5]), // TODO
      monsterDeath: "You were killed by a <span class='monsterName'>giant worm</span>!",
      item: "\u25c9",
@@ -397,6 +401,60 @@ areas = (function() {
      itemBold: "normal",
      itemName: "Sign of Fire",
      itemMsg: "You found the <span class='itemName'>sign of Fire</span>!",
+     itemDesc: "Use it for killing wolves.", // TODO
+     itemProbability: function(G, c) { return -1; },
+     itemFuncEmpty: function(G, c) { return false; },
+     itemPickUp: function(G, c) { return false; },
+     itemFuncMonster: function(G, c) {
+         if(G.areas[c.monster].monsterElement.includes("animal")) {
+             G.destroyMonster(c);
+             return true;
+         } else { return false; }
+     },
+     itemFuncStandby: function(G) { return false; },
+     itemFuncAttacked: function(G, c, cells) { return false; },
+     itemFuncObstacle: function(G, c) {
+         if(G.areas[c.area].obstacleElement.includes("mineral")) {
+             c.obstacle = false;
+             // TODO in some worlds, an itme is found under the rock
+             if(c.area == 5) { if (Math.random()<0.125) { c.item = true; } }
+             c.refreshDisplay();
+             return true;
+         } else { return false; }
+     }
+  },
+  // area n° 6
+    // very often contiguous: [2, 4, 7, 14, 22, 38]
+    // often contiguous: [0, 3, 5, 10, 12, 15, 18, 20, 23, 30, 34, 36, 39, 46, 54]
+    // sometimes contiguous: [1, 8, 11, 13, 16, 19, 21, 26, 28, 31, 32, 35, 37, 42, 44, 47, 50, 52, 55, 62]
+    // seldom contiguous: [9, 17, 24, 27, 29, 33, 40, 43, 45, 48, 51, 53, 58, 60, 63]
+    // very seldom contiguous: [25, 41, 49, 56, 59, 61]
+    // probably never contiguous: [57]
+  {
+     symbol: "\u00b7", // TODO
+     color: "#c66528",
+     desc: "You are walking on <span class='areaName'>land n° 7</span>.",
+     obstacle: "Y",
+     obstacleColor: "#c66528",
+     obstacleBold: "normal",
+     obstacleMsg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
+     obstacleElement: ["vegetal"],
+     obstacleFrequency: 10,
+     monster: "w",
+     // monsterName: "wolf",
+     monsterColor: "#c66528",
+     monsterBold: "normal",
+     monsterMsg: "The <span class='monsterName'>wolf</span> would kill you!",
+     monsterKill: "You killed the <span class='monsterName'>wolf</span>!",
+     monsterElement: ["mammal"],
+     monsterProbability: function(G, c) { return 0.01; },
+     monsterMove: function(G, c, tx, ty) { return [c.x, c.y]; },
+     monsterDeath: "You were killed by a <span class='monsterName'>wolf</span>!",
+     item: "\u25c9",
+     itemColor: "#c66528",
+     itemBold: "normal",
+     itemName: "Sign of earth",
+     itemMsg: "You found the <span class='itemName'>sign of earth</span>!",
      itemDesc: "Use it for killing wolves.",
      itemProbability: function(G, c) { return 0.01; },
      itemFuncEmpty: function(G, c) { return false; },
@@ -406,13 +464,13 @@ areas = (function() {
      itemFuncAttacked: function(G, c, cells) { return false; },
      itemFuncObstacle: function(G, c) { return false; }
   },
-  // area n° 6
-    // very often contiguous: [2, 4, 7, 14, 22, 38]
-    // often contiguous: [0, 3, 5, 10, 12, 15, 18, 20, 23, 30, 34, 36, 39, 46, 54]
-    // sometimes contiguous: [1, 8, 11, 13, 16, 19, 21, 26, 28, 31, 32, 35, 37, 42, 44, 47, 50, 52, 55, 62]
-    // seldom contiguous: [9, 17, 24, 27, 29, 33, 40, 43, 45, 48, 51, 53, 58, 60, 63]
-    // very seldom contiguous: [25, 41, 49, 56, 59, 61]
-    // probably never contiguous: [57]
+  // area n° 7
+    // very often contiguous: [3, 5, 6, 15, 23, 39]
+    // often contiguous: [1, 2, 4, 11, 13, 14, 19, 21, 22, 31, 35, 37, 38, 47, 55]
+    // sometimes contiguous: [0, 9, 10, 12, 17, 18, 20, 27, 29, 30, 33, 34, 36, 43, 45, 46, 51, 53, 54, 63]
+    // seldom contiguous: [8, 16, 25, 26, 28, 32, 41, 42, 44, 49, 50, 52, 59, 61, 62]
+    // very seldom contiguous: [24, 40, 48, 57, 58, 60]
+    // probably never contiguous: [56]
   {
      symbol: "\u2237", // four dots
      color: "#806600",
@@ -440,47 +498,6 @@ areas = (function() {
      itemMsg: "You found the <span class='itemName'>sign of Dark Water</span>!",
      itemDesc: "Use it for killing wolves.",
      itemProbability: function(G, c) { return 0.005; },
-     itemFuncEmpty: function(G, c) { return false; },
-     itemPickUp: function(G, c) { return false; },
-     itemFuncMonster: function(G, c) { return false; },
-     itemFuncStandby: function(G) { return false; },
-     itemFuncAttacked: function(G, c, cells) { return false; },
-     itemFuncObstacle: function(G, c) { return false; }
-  },
-  // area n° 7
-    // very often contiguous: [3, 5, 6, 15, 23, 39]
-    // often contiguous: [1, 2, 4, 11, 13, 14, 19, 21, 22, 31, 35, 37, 38, 47, 55]
-    // sometimes contiguous: [0, 9, 10, 12, 17, 18, 20, 27, 29, 30, 33, 34, 36, 43, 45, 46, 51, 53, 54, 63]
-    // seldom contiguous: [8, 16, 25, 26, 28, 32, 41, 42, 44, 49, 50, 52, 59, 61, 62]
-    // very seldom contiguous: [24, 40, 48, 57, 58, 60]
-    // probably never contiguous: [56]
-  {
-     symbol: "\u00b7",
-     color: "#c66528",
-     desc: "You are walking on <span class='areaName'>land n° 7</span>.",
-     obstacle: "Y",
-     obstacleColor: "#c66528",
-     obstacleBold: "normal",
-     obstacleMsg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
-     obstacleElement: "vegetal",
-     obstacleFrequency: 10,
-     monster: "w",
-     // monsterName: "wolf",
-     monsterColor: "#c66528",
-     monsterBold: "normal",
-     monsterMsg: "The <span class='monsterName'>wolf</span> would kill you!",
-     monsterKill: "You killed the <span class='monsterName'>wolf</span>!",
-     monsterElement: "mammal",
-     monsterProbability: function(G, c) { return 0.01; },
-     monsterMove: function(G, c, tx, ty) { return [c.x, c.y]; },
-     monsterDeath: "You were killed by a <span class='monsterName'>wolf</span>!",
-     item: "\u25c9",
-     itemColor: "#c66528",
-     itemBold: "normal",
-     itemName: "Sign of earth",
-     itemMsg: "You found the <span class='itemName'>sign of earth</span>!",
-     itemDesc: "Use it for killing wolves.",
-     itemProbability: function(G, c) { return 0.01; },
      itemFuncEmpty: function(G, c) { return false; },
      itemPickUp: function(G, c) { return false; },
      itemFuncMonster: function(G, c) { return false; },
