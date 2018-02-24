@@ -345,6 +345,7 @@ function initBoard(div) {
       "showMethod": "fadeIn",
       "hideMethod": "fadeOut"
     };
+    toastr.remove();
 
     // Warning: (x,y) is the new position of the player (before
     // redrawing the map)!
@@ -370,9 +371,10 @@ function initBoard(div) {
         toastr.remove();
         toastr.info(msg
                      + "<br/><br/>"
-                     + "<a href=\"#game\" onclick=\"newGame();\""
+                     + "<span onclick='window.location.href=\"#home\";"
+                     + " setTimeout(newGame,500);'"
                      + "   style=\"color: yellow;\">"
-                     + restart + "</a>",
+                     + restart + "</span>",
                     "", {
                         timeOut: 0,
                         extendedTimeOut: 0,
