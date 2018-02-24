@@ -300,7 +300,7 @@ function initBoard(div) {
                     var n = i*8+j;
                     g.innerHTML = (n).toString();
                     f.appendChild(g);
-                    g.onclick = (function (m, u2) {
+                    g.onclick = (function (m, u2, us2) {
                         return function () {
                             var l = m;
                             var s = [];
@@ -311,9 +311,10 @@ function initBoard(div) {
                             that.item = u2;
                             that.geometry.currentCoords = s;
                             that.recomputeBoard();
-                            that.setStory("Loading area " + m.toString() + "\u2026");
+                            that.setStory("Loading area " + m.toString()
+                                    + " with " + us2 + "\u2026");
                         };
-                    })(n, u);
+                    })(n, u, us);
                 }
             }
 
