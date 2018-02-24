@@ -359,6 +359,7 @@ areas = (function() {
          if(G.areas[c.area].obstacleElement.includes("mineral")) {
              c.obstacle = false;
              // TODO in some worlds, an itme is found under the rock
+             if(c.area == 5) { if (Math.random()<0.125) { c.item = true; } }
              c.refreshDisplay();
              return true;
          } else { return false; }
@@ -374,7 +375,7 @@ areas = (function() {
   {
      symbol: "\u00b7",
      color: "#c00",
-     desc: "You are walking on <span class='areaName'>land n° 5</span>.",
+     desc: "You discovered a <span class='areaName'>rugged terrain</span>. You have the feeling that something is hidden somewhere.",
      obstacle: "\u25b2",
      obstacleColor: "#c00",
      obstacleBold: "normal",
@@ -382,15 +383,16 @@ areas = (function() {
      obstacleElement: ["mineral"],
      obstacleFrequency: 2,
      monster: "w",
-     // monsterName: "wolf",
-     monsterColor: "#bed138",
+     // monsterName: "worm",
+     monsterColor: "#ff8000",
      monsterBold: "normal",
-     monsterMsg: "The <span class='monsterName'>wolf</span> would kill you!",
-     monsterKill: "You killed the <span class='monsterName'>wolf</span>!",
-     monsterElement: "mammal",
-     monsterProbability: function(G, c) { return 0.01; },
-     monsterMove: function(G, c, tx, ty) { return [c.x, c.y]; },
-     monsterDeath: "You were killed by a <span class='monsterName'>wolf</span>!",
+     monsterMsg: "The <span class='monsterName'>giant worm</span> would kill you!",
+     monsterKill: "You killed the <span class='monsterName'>giant worm</span>!",
+     monsterElement: ["animal", "worm"],
+     monsterProbability: basicProbability(0.05),
+         // TODO: ne s'écarte pas de son territoire
+     monsterMove: monsterMoveErraticCoward(0.25, [4, 5]), // TODO
+     monsterDeath: "You were killed by a <span class='monsterName'>giant worm</span>!",
      item: "\u25c9",
      itemColor: "#e60000",
      itemBold: "normal",
