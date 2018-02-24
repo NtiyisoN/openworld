@@ -71,7 +71,7 @@ areas = (function() {
         }
         return disp;
     };
-    var deathPlayer = function(msg) {
+    var deathPlayer = function(G, msg) {
         G.alive = false;
         G.symbolColor = "#666";
         G.restartGame(msg, "Restart the game");
@@ -80,7 +80,7 @@ areas = (function() {
         var dd = Math.max(Math.abs(c.x-tx), Math.abs(c.y-ty));
         var targets = [c];
         if(dd==1) {
-            deathPlayer(G.story + G.areas[c.monster].monsterDeath);
+            deathPlayer(G, G.story + G.areas[c.monster].monsterDeath);
         } else {
             var disp = emptyAround(G,c);
             for(var i=0;i<disp.length;i++) {
@@ -97,7 +97,7 @@ areas = (function() {
             var dd = Math.max(Math.abs(c.x-tx), Math.abs(c.y-ty));
             var targets = [c];
             if(dd==1) {
-                deathPlayer(G.story + G.areas[c.monster].monsterDeath);
+                deathPlayer(G, G.story + G.areas[c.monster].monsterDeath);
             } else {
                 var disp = emptyAround(G,c);
                 if(Math.random() < z) { targets = disp; }
