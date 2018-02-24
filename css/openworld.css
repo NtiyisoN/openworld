@@ -1,0 +1,60 @@
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(../fonts/SourceCodePro-Regular.ttf) format('truetype');
+}
+
+body {
+    font-family:  "Source Code Pro", monospace;
+    color: #fff;
+}
+
+.areaName { color: #e6e600; }
+.obstacleName { color: #33cc33; }
+.monsterName { color: #b3003b; }
+.itemName { color: #b3e6ff; }
+
+#game, #debugExt {
+    text-align: center;
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+
+.divExt {
+    display: table-cell; vertical-align: middle;
+}
+
+#debug table {
+    margin: 0 auto 8px;
+    font-size: 28px;
+}
+
+#board {
+    font-family:  "Source Code Pro", monospace;
+    font-size: 52px;
+    line-height: 90%;
+    display: inline-block;
+}
+
+a {
+    text-decoration: none;
+    color: yellow;
+}
+
+#debugLink, #debugReturnLink {
+    font-family:  "Source Code Pro", monospace;
+    color: white;
+    font-size: 24px;
+}
+
+#toast-container > .toast-info {
+    background-image: none !important;
+}
+#toast-container > .toast {
+    background: #111;
+    background-image: none !important;
+}

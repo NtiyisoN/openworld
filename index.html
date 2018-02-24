@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Openworld Survival Roguelike</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/jquery.mobile-1.5.0-alpha.1.min.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+
+    <link href="css/toastr.min.css" rel="stylesheet"/>
+    <script src="js/toastr.min.js"></script>
+
+    <script src="js/areas.js"></script>
+    <script src="js/board.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/openworld.css">
+<script type="text/javascript">
+  var G;
+  function newGame() {
+      G = initBoard(document.getElementById("board"));
+  };
+</script>
+</head>
+<body onload="newGame();">
+
+  <div id="game" data-role="page" data-theme="b">
+    <div class="divExt">
+      <div id="board"></div>
+    </div>
+  </div>
+
+  <div id="debugExt" data-role="page" data-theme="b">
+    <div class="divExt">
+      <div id="debug"></div>
+    </div>
+  </div>
+</body>
+</html>
