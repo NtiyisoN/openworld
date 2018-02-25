@@ -404,6 +404,41 @@ function initBoard(div) {
         c.monster = false;
         c.refreshDisplay();
     };
+
+    // cells visible around a given cell (even if no empty)
+    // (hidden corners are correctly handled)
+    that.visibleAround = function(c) {
+        var a = [];
+        for(var y=-1; y<2; y++) {
+            if(Math.abs(c.y+y) > this.boardHalfSize) { continue; }
+            for(var x=-1; x<2; x++) {
+                if(Math.abs(c.x+x) > this.boardHalfSize) { continue; }
+                if((x!=0)||(y!=0)) {
+                    if((Math.abs(c.x+x)!=this.boardHalfSize)
+                       || (Math.abs(c.x+x)!=this.boardHalfSize)) {
+                        a.push(this.getBoardCell(c.x+x, c.y+y));
+                    }
+                }
+            }
+        }
+        return a;
+    };
+    that.noMonsterAround = function(c) {
+        return this.visibleAround(c).filter(function (e) {
+            return (e.monster===false);
+        });
+    };
+    that.noObstacleAround = function(c) {
+        return this.visibleAround(c).filter(function (e) {
+            return (e.obstacle===false);
+        });
+    };
+    // no monster and no obstacle
+    that.emptyAround = function(c) {
+        return this.visibleAround(c).filter(function (e) {
+            return (e.monster===false)&&(e.obstacle===false);
+        });
+    };
             
     that.click = function(x,y) {
         if (this.character.alive) {

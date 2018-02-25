@@ -8,54 +8,7 @@ areas = (function() {
     // ==============================================
     //
     var incScore = function (z) { return function(G) { G.score += z }; };
-    //  Look for existing cells around 'c' containing no monster and no obst.
-    var emptyAround = function (G,c) {
-        var disp = [];
-        var x = c.x; var y = c.y;
-        if(x-1 >= -G.boardHalfSize) {
-            if((y-1 >= -G.boardHalfSize) && ((y-1 != -G.boardHalfSize)
-                                         ||  (x-1 != -G.boardHalfSize))) {
-                var nc = G.getBoardCell(x-1,y-1);
-                if((!(nc.obstacle))&&(nc.monster===false)) { disp.push(nc); }
-            }
-            if((Math.abs(y) != G.boardHalfSize) || (x-1 != -G.boardHalfSize)) {
-                var nc = G.getBoardCell(x-1,y);
-                if((!(nc.obstacle))&&(nc.monster===false)) { disp.push(nc); }
-            }
-            if((y+1 <= G.boardHalfSize) && ((y+1 != G.boardHalfSize)
-                                         ||  (x-1 != -G.boardHalfSize))) {
-                var nc = G.getBoardCell(x-1,y+1);
-                if((!(nc.obstacle))&&(nc.monster===false)) { disp.push(nc); }
-            }
-        }
-        if((y-1 >= -G.boardHalfSize) && ((y-1 != -G.boardHalfSize)
-                                     ||  (Math.abs(x) != -G.boardHalfSize))) {
-            var nc = G.getBoardCell(x,y-1);
-            if((!(nc.obstacle))&&(nc.monster===false)) { disp.push(nc); }
-        }
-        if((y+1 <= G.boardHalfSize) && ((y+1 != G.boardHalfSize)
-                                     ||  (x != Math.abs(G.boardHalfSize)))) {
-            var nc = G.getBoardCell(x,y+1);
-            if((!(nc.obstacle))&&(nc.monster===false)) { disp.push(nc); }
-        }
-        if(x+1 <= G.boardHalfSize) {
-            if((y-1 >= -G.boardHalfSize) && ((y-1 != -G.boardHalfSize)
-                                         ||  (x+1 != G.boardHalfSize))) {
-                var nc = G.getBoardCell(x+1,y-1);
-                if((!(nc.obstacle))&&(nc.monster===false)) { disp.push(nc); }
-            }
-            if((Math.abs(y) != G.boardHalfSize) || (x+1 != G.boardHalfSize)) {
-                var nc = G.getBoardCell(x+1,y);
-                if((!(nc.obstacle))&&(nc.monster===false)) { disp.push(nc); }
-            }
-            if((y+1 <= G.boardHalfSize) && ((y+1 != G.boardHalfSize)
-                                         ||  (x+1 != G.boardHalfSize))) {
-                var nc = G.getBoardCell(x+1,y+1);
-                if((!(nc.obstacle))&&(nc.monster===false)) { disp.push(nc); }
-            }
-        }
-        return disp;
-    };
+    //
     var deathPlayer = function(G, msg) {
         G.character.alive = false;
         G.character.color = "#666";
@@ -68,7 +21,7 @@ areas = (function() {
         if(dd==1) {
             deathPlayer(G, G.story + G.areas[c.monster].monster.death);
         } else {
-            var disp = emptyAround(G,c);
+            var disp = G.emptyAround(c);
             for(var i=0;i<disp.length;i++) {
                 var dd2 = Math.max(Math.abs(disp[i].x-tx), Math.abs(disp[i].y-ty));
                 if (dd2<dd) { dd = dd2; targets = [disp[i]]; }
@@ -87,7 +40,7 @@ areas = (function() {
             if(dd==1) {
                 deathPlayer(G, G.story + G.areas[c.monster].monster.death);
             } else {
-                var disp = emptyAround(G,c);
+                var disp = G.emptyAround(c);
                 if(Math.random() < z) { targets = disp; }
                 else {
                 for(var i=0;i<disp.length;i++) {
@@ -111,7 +64,7 @@ areas = (function() {
             if(dd==1) {
                 deathPlayer(G, G.story + G.areas[c.monster].monster.death);
             } else {
-                var disp = emptyAround(G,c).filter(
+                var disp = G.emptyAround(c).filter(
                         function (e) { return ar.includes(e.area) });
                 if(Math.random() < z) { targets = disp; }
                 else {
