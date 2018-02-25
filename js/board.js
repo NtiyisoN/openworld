@@ -519,7 +519,7 @@ function initBoard(div) {
                                  &&(Math.abs(ox)==boardHalfSize))) {
                                 // compute incoming cell
                                 c.area = this.geometry.getAreaRelative(myx,myy);
-                                if (this.computeObstacle(c, myx, myy)) {
+                                if (this.areas[c.area].obstacle.check(this, c)) {
                                     c.obstacle = true;
                                     c.monster = false;
                                     c.item = false;
@@ -593,16 +593,6 @@ function initBoard(div) {
         return board[y+boardHalfSize][x+boardHalfSize];
     };
 
-    // c.area must be already computed
-    // TODO: replace * by some XOR
-    that.computeObstacle = function(c, x, y) {
-        c.obstacle = (0 == (Math.floor(
-            this.geometry.getVectorRelative(x,y) // coords
-                .reduce(function(t,n) { return t*n; } )
-                * 65536) % (this.areas[c.area].obstacle.frequency)));
-        return c.obstacle;
-    };
-
     that.recomputeBoard = function () {
         this.monsters = [];
         for(var y=boardHalfSize; y>-(boardHalfSize+1);y--) {
@@ -617,11 +607,7 @@ function initBoard(div) {
                 c.item = false;
                 c.monster = false;
                 if((x!=0)||(y!=0)) {
-                    if (this.computeObstacle(c, x, y)) {
-                        c.obstacle = true;
-                    } else {
-                        c.obstacle = false;
-                    }
+                    c.obstacle = this.areas[c.area].obstacle.check(this, c);
                 }
                 c.refreshDisplay();
             };

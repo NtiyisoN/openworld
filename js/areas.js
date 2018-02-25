@@ -135,6 +135,15 @@ areas = (function() {
             return (1-Math.pow(t,p));
         };
     };
+    // ostacle probability
+    var basicObstacleProbability = function (s) {
+        return function (G, c) {
+            return 0 == (Math.floor(
+            G.geometry.getVectorRelative(c.x,c.y)
+                .reduce(function(t,n) { return t*n; } )
+                * 65536) % s);
+        };
+    };
   return [
   // area n° 0
     // very often contiguous: [1, 2, 4, 8, 16, 32]
@@ -153,7 +162,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on this <span class='obstacleName'>tree</span>!",
        elements: ["vegetal"],
-       frequency: 11
+       check: basicObstacleProbability(11)
      },
      monster: {
        symbol: "d",
@@ -206,7 +215,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk in the <span class='areaName'>water</span>!",
        elements: ["unwalkable"],
-       frequency: 1
+       check: basicObstacleProbability(1)
      },
      monster: {
        symbol: "~",
@@ -252,7 +261,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on this <span class='obstacleName'>tree</span>!",
        elements: ["vegetal"],
-       frequency: 2
+       check: basicObstacleProbability(2)
      },
      monster: {
        symbol: "d",
@@ -305,7 +314,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on this <span class='obstacleName'>bush</span>!",
        elements: ["vegetal"],
-       frequency: 20
+       check: basicObstacleProbability(20)
      },
      monster: {
        symbol: "s",
@@ -358,7 +367,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on this huge <span class='obstacleName'>rock</span>!",
        elements: ["mineral"],
-       frequency: 18
+       check: basicObstacleProbability(18)
      },
      monster: {
        symbol: "w",
@@ -420,7 +429,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on this huge <span class='obstacleName'>rock</span>!",
        elements: ["mineral"],
-       frequency: 2
+       check: basicObstacleProbability(2)
      },
      monster: {
        symbol: "w",
@@ -481,7 +490,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: ["vegetal"],
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -527,7 +536,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk in this <span class='obstacleName'>swampy ditch</span>!",
        elements: ["water"],
-       frequency: 5
+       check: basicObstacleProbability(5)
      },
      monster: {
        symbol: "s",
@@ -573,7 +582,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -619,7 +628,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -665,7 +674,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -711,7 +720,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -757,7 +766,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -803,7 +812,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on this <span class='areaName'>boiling lava</span>!",
        elements: ["unwalkable"],
-       frequency: 1
+       check: basicObstacleProbability(1)
      },
      monster: {
        symbol: "",
@@ -849,7 +858,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -895,7 +904,7 @@ areas = (function() {
        bold: "normal",
        msg: "The <span class='areaName'>poisoned vapors</span> would kill you!",
        elements: ["unwalkable"],
-       frequency: 0
+       check: basicObstacleProbability(0)
      },
      monster: {
        symbol: "\u2248", // two waves
@@ -941,7 +950,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -987,7 +996,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1033,7 +1042,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1079,7 +1088,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1125,7 +1134,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1171,7 +1180,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1217,7 +1226,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1263,7 +1272,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1309,7 +1318,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1355,7 +1364,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1401,7 +1410,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1447,7 +1456,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1493,7 +1502,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1539,7 +1548,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1585,7 +1594,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1631,7 +1640,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1677,7 +1686,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1723,7 +1732,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1769,7 +1778,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1815,7 +1824,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1861,7 +1870,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1907,7 +1916,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1953,7 +1962,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -1999,7 +2008,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2045,7 +2054,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2091,7 +2100,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2137,7 +2146,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2183,7 +2192,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2229,7 +2238,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2275,7 +2284,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2321,7 +2330,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2367,7 +2376,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2413,7 +2422,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2459,7 +2468,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2505,7 +2514,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2551,7 +2560,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2597,7 +2606,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2643,7 +2652,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2689,7 +2698,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2735,7 +2744,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2781,7 +2790,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2827,7 +2836,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2873,7 +2882,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2919,7 +2928,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -2965,7 +2974,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -3011,7 +3020,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -3057,7 +3066,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
@@ -3103,7 +3112,7 @@ areas = (function() {
        bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
-       frequency: 10
+       check: basicObstacleProbability(10)
      },
      monster: {
        symbol: "w",
