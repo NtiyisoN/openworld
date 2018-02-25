@@ -148,7 +148,6 @@ function initBoard(div) {
     that.module = {};
 
     that.alive = true;
-    toastr.remove();
 
     that.geometry = initGeometry();
     that.areas = areas;
@@ -373,6 +372,7 @@ function initBoard(div) {
                      + "<br/><br/>"
                      //+ "<span onclick='window.location.href=\"#home\";"
                      + "<span onclick='$(\"#menu\").popup(\"open\");"
+                     + " toastr.remove();"
                      + " setTimeout(newGame,500);'"
                      + "   style=\"color: yellow;\">"
                      + restart + "</span>",
