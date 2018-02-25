@@ -23,6 +23,15 @@ body {
     width: 100%;
 }
 
+#menu h1 {
+    font-size: large;
+}
+#menu p {
+    font-size: small;
+}
+#menu #startButton {
+    color: #cfc;
+}
 
 .divExt {
     display: table-cell; vertical-align: middle;
