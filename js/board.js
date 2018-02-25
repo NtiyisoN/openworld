@@ -153,9 +153,11 @@ function initBoard(div) {
     that.areas = areas;
     that.story = "";
     that.item = 64;
-    that.symbol = areas[64].monster;
-    that.symbolColor = areas[64].monsterColor;
-    that.symbolBold = areas[64].monsterBold;
+    that.character = {
+      symbol: areas[64].monster.symbol,
+      color: areas[64].monster.color,
+      bold: areas[64].monster.bold
+    };
     that.monsters = [];
 
     that.areaTurns = (new Array(areas.length)).fill(0);
@@ -235,29 +237,31 @@ function initBoard(div) {
                 if((this.x==0)&&(this.y==0)) {
                     if(!(that.alive)) { this.item = false; }
                     if(this.item) {
-                        this.update(that.symbol, "#111", that.symbolBold);
+                        this.update(that.character.symbol,
+                                "#111", that.character.bold);
                         this.DOM.style.backgroundColor =
-                             that.areas[this.area].itemColor;
+                             that.areas[this.area].item.color;
                     } else {
-                        this.update(that.symbol, that.symbolColor, that.symbolBold);
+                        this.update(that.character.symbol,
+                                that.character.color, that.character.bold);
                         this.DOM.style.backgroundColor = "initial";
                     }
                 } else if (this.obstacle) {
-                    this.update(that.areas[this.area].obstacle,
-                             that.areas[this.area].obstacleColor,
-                             that.areas[this.area].obstacleBold);
+                    this.update(that.areas[this.area].obstacle.symbol,
+                             that.areas[this.area].obstacle.color,
+                             that.areas[this.area].obstacle.bold);
                 } else if (this.monster !== false) {
-                    this.update(that.areas[this.monster].monster,
-                             that.areas[this.monster].monsterColor,
-                             that.areas[this.monster].monsterBold);
+                    this.update(that.areas[this.monster].monster.symbol,
+                             that.areas[this.monster].monster.color,
+                             that.areas[this.monster].monster.bold);
                 } else if (this.item) {
-                    this.update(that.areas[this.area].item,
-                             that.areas[this.area].itemColor,
-                             that.areas[this.area].itemBold);
+                    this.update(that.areas[this.area].item.symbol,
+                             that.areas[this.area].item.color,
+                             that.areas[this.area].item.bold);
                 } else {
                     this.update(that.areas[this.area].symbol,
                              that.areas[this.area].color,
-                             "normal");
+                             that.areas[this.area].bold);
                 }
             };
 
@@ -353,7 +357,7 @@ function initBoard(div) {
     that.moveMonsters = function(x,y) {
         for(var i=this.monsters.length-1; i>=0; i--) {
             var c = this.monsters[i];
-            var [nx,ny] = this.areas[c.monster].monsterMove(this,c,x,y);
+            var [nx,ny] = this.areas[c.monster].monster.move(this,c,x,y);
             if ((nx != c.x)||(ny != c.y)) {
                 var c2 = this.getBoardCell(nx,ny);
                 c2.monster = c.monster;
@@ -406,18 +410,18 @@ function initBoard(div) {
                     toastr.remove();
                     toastr.info(
                         "<span style='font-weight:"
-                        + this.areas[this.item].itemBold
+                        + this.areas[this.item].item.bold
                         + "; color:"
-                        + this.areas[this.item].itemColor
+                        + this.areas[this.item].item.color
                         + "; font-size: 125%;'>"
-                        + this.areas[this.item].item
+                        + this.areas[this.item].item.symbol
                         + "</span> "
-                        + this.areas[this.item].itemName, "",
+                        + this.areas[this.item].item.name, "",
                         {positionClass: "toast-top-center"});
-                    this.areas[this.item].itemPickUp();
+                    this.areas[this.item].item.funcPickUp();
                     c.refreshDisplay();
                 } else {
-                    this.areas[this.item].itemFuncStandby(this);
+                    this.areas[this.item].item.funcStandby(this);
                 }
                 this.areaTurns[c.area]++;
                 this.moveMonsters(0,0);
@@ -430,16 +434,16 @@ function initBoard(div) {
                 // move
                 var c = this.getBoardCell(x,y);
                 if (c.obstacle) {
-                    if(!(this.areas[this.item].itemFuncObstacle(this, c))) {
-                        this.story += this.areas[c.area].obstacleMsg;
+                    if(!(this.areas[this.item].item.funcObstacle(this, c))) {
+                        this.story += this.areas[c.area].obstacle.msg;
                     } else {
                         this.areaTurns[this.getBoardCell(0,0).area]++;
                         this.moveMonsters(0,0);
                     }
                 } else if (c.monster !== false) {
-                    if(!(this.areas[this.item].itemFuncMonster(this, c))) {
+                    if(!(this.areas[this.item].item.funcMonster(this, c))) {
                         if(!(this.story)) {
-                          this.story += this.areas[c.area].monsterMsg;
+                          this.story += this.areas[c.area].monster.msg;
                         }
                     } else {
                         this.areaTurns[this.getBoardCell(0,0).area]++;
@@ -471,17 +475,17 @@ function initBoard(div) {
                     if (this.getBoardCell(x+1,y+1).monster !== false)
                         { monsters.push(this.getBoardCell(x+1,y+1)); }
                     if(!(this.areas[this.item]
-                             .itemFuncAttacked(this, c, monsters))) {
+                             .item.funcAttacked(this, c, monsters))) {
                         var i = Math.floor(Math.random()*(monsters.length));
                         this.story += this.areas[monsters[i].monster]
-                                          .monsterMsg;
+                                          .monster.msg;
                     } else {
                         this.areaTurns[this.getBoardCell(0,0).area]++;
                         this.moveMonsters(0,0);
                     }
                 } else 
                     // Test first itemFuncEmpty
-                    if(!(this.areas[this.item].itemFuncEmpty(this, c))) {
+                    if(!(this.areas[this.item].item.funcEmpty(this, c))) {
                     // move Monsters
                     this.moveMonsters(x,y);
                     this.monsters = []; // refresh monster list below
@@ -525,12 +529,12 @@ function initBoard(div) {
                                     c.obstacle = false;
                                     if (Math.random()
                                         < this.areas[c.area]
-                                            .monsterProbability(this, c)) {
+                                            .monster.probability(this, c)) {
                                         c.monster = c.area;
                                     } else { c.monster = false; }
                                     if (Math.random()
                                         < this.areas[c.area]
-                                            .itemProbability(this, c)) {
+                                            .item.probability(this, c)) {
                                         c.item = true;
                                     } else { c.item = false; }
                                 }
@@ -551,8 +555,8 @@ function initBoard(div) {
                     }
                     this.areaTurns[c.area]++;
                     if(c.item) {
-                        this.story += this.areas[c.area].itemMsg + "<br/>";
-                        this.story += this.areas[c.area].itemDesc;
+                        this.story += this.areas[c.area].item.msg + "<br/>";
+                        this.story += this.areas[c.area].item.desc;
                     }
                 } else { // itemFuncEmpty worked!
                     this.areaTurns[this.getBoardCell(0,0).area]++;
@@ -581,7 +585,7 @@ function initBoard(div) {
         c.obstacle = (0 == (Math.floor(
             this.geometry.getVectorRelative(x,y) // coords
                 .reduce(function(t,n) { return t*n; } )
-                * 65536) % (this.areas[c.area].obstacleFrequency)));
+                * 65536) % (this.areas[c.area].obstacle.frequency)));
         return c.obstacle;
     };
 
