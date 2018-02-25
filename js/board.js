@@ -282,47 +282,53 @@ function initBoard(div) {
         div.appendChild(c);
         c = document.getElementById("debug");
         while (c.hasChildNodes()) { c.removeChild(c.lastChild); }
+        that.debugSelect = document.createElement("select");
+        c.appendChild(that.debugSelect);
+        that.debugSelect.setAttribute("id", "itemSelect");
         for(it=0;it<65;it++) {
-            var d = document.createElement("h1");
             var u = (it+64)%65;
             var us = "item n° " + u.toString();
             if(u==64) { us = "initial item"; }
-            d.innerHTML = "With " + us;
-            c.appendChild(d);
-            d = document.createElement("table");
-            c.appendChild(d);
-            for(var i=0;i<8;i++) {
-                var e = document.createElement("tr");
-                d.appendChild(e);
-                for(var j=0;j<8;j++) {
-                    var f = document.createElement("td");
-                    f.style.textAlign = "right";
-                    e.appendChild(f);
-                    var g = document.createElement("a");
-                    g.setAttribute("href","#game");
-                    var n = i*8+j;
-                    g.innerHTML = (n).toString();
-                    f.appendChild(g);
-                    g.onclick = (function (m, u2, us2) {
-                        return function () {
-                            var l = m;
-                            var s = [];
-                            for(var k = 0; k < 6; k++) {
-                                s.push(0.5 + l%2);
-                                l >>= 1;
-                            };
-                            that.item = u2;
-                            that.geometry.currentCoords = s;
-                            that.recomputeBoard();
-                            that.setStory("Loading area " + m.toString()
-                                    + " with " + us2 + "\u2026");
-                        };
-                    })(n, u, us);
-                }
-            }
-
+            var e = document.createElement("option");
+            e.innerHTML = "Play with " + us;
+            e.setAttribute("value",(u).toString());
+            that.debugSelect.appendChild(e);
         }
-
+        d = document.createElement("table");
+        c.appendChild(d);
+        for(var i=0;i<8;i++) {
+            e = document.createElement("tr");
+            d.appendChild(e);
+            for(var j=0;j<8;j++) {
+                var f = document.createElement("td");
+                f.style.textAlign = "right";
+                e.appendChild(f);
+                var g = document.createElement("a");
+                g.setAttribute("href","#game");
+                var n = i*8+j;
+                g.innerHTML = (n).toString();
+                f.appendChild(g);
+                g.onclick = (function (m) {
+                    return function () {
+                        var l = m;
+                        var s = [];
+                        for(var k = 0; k < 6; k++) {
+                            s.push(0.5 + l%2);
+                            l >>= 1;
+                        };
+                        var u = that.debugSelect.selectedIndex;
+                        u = (u+64)%65;
+                        var us = "item n° " + u.toString();
+                        if(u==64) { us = "initial item"; }
+                        that.item = u;
+                        that.geometry.currentCoords = s;
+                        that.recomputeBoard();
+                        that.setStory("Loading area " + m.toString()
+                                + " with " + us + "\u2026");
+                    };
+                })(n);
+            }
+        }
         d = document.createElement("a");
         d.setAttribute("id","debugReturnLink");
         d.setAttribute("href","#game");

@@ -3124,7 +3124,7 @@ areas = (function() {
   { // special area 64 containing the initial item and other stuff
     // ===========================================================
      debug: true,
-     monster: {
+     monster: { // Main character of the game (player)
          symbol: "@",
          color:"#fff",
          bold: "bold"
