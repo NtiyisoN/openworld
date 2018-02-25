@@ -147,18 +147,18 @@ function initBoard(div) {
     // Empty location where the "theme" can store datas
     that.module = {};
 
-    that.alive = true;
-
     that.geometry = initGeometry();
     that.areas = areas;
     that.story = "";
     that.item = 64;
     that.character = {
+      alive: true,
       symbol: areas[64].monster.symbol,
       color: areas[64].monster.color,
       bold: areas[64].monster.bold
     };
     that.monsters = [];
+    that.score = 0;
 
     that.areaTurns = (new Array(areas.length)).fill(0);
     that.areaKills = (new Array(areas.length)).fill(0);
@@ -235,7 +235,7 @@ function initBoard(div) {
             };
             cell.refreshDisplay = function () {
                 if((this.x==0)&&(this.y==0)) {
-                    if(!(that.alive)) { this.item = false; }
+                    if(!(that.character.alive)) { this.item = false; }
                     if(this.item) {
                         this.update(that.character.symbol,
                                 "#111", that.character.bold);
@@ -373,7 +373,7 @@ function initBoard(div) {
                 this.monsters[i] = c2; // update this.monsters
             }
             // prevent being killed several times!
-            if(!(this.alive)) { break; }
+            if(!(this.character.alive)) { break; }
         }
     };
 
@@ -381,6 +381,8 @@ function initBoard(div) {
         this.getBoardCell(0,0).refreshDisplay();
         toastr.remove();
         toastr.info(msg
+                     + "<br/><br/>"
+                     + "Score: " + this.score.toString()
                      + "<br/><br/>"
                      + "<span onclick='$(\"#menu\").popup(\"open\");"
                      + " toastr.remove();"
@@ -404,7 +406,7 @@ function initBoard(div) {
     };
             
     that.click = function(x,y) {
-        if (this.alive) {
+        if (this.character.alive) {
             this.story = "";
             if((x==0)&&(y==0)) {
                 // standby + pickup item + itemStandby
@@ -413,19 +415,9 @@ function initBoard(div) {
                     this.item = c.area;
                     c.item = false;
                     this.areaItems[c.area]++;
-                    toastr.remove();
-                    toastr.info(
-                        "<span style='font-weight:"
-                        + this.areas[this.item].item.bold
-                        + "; color:"
-                        + this.areas[this.item].item.color
-                        + "; font-size: 125%;'>"
-                        + this.areas[this.item].item.symbol
-                        + "</span> "
-                        + this.areas[this.item].item.name, "",
-                        {positionClass: "toast-top-center"});
-                    this.areas[this.item].item.funcPickUp();
+                    this.areas[this.item].item.funcPickUp(this);
                     c.refreshDisplay();
+                    this.displayScore();
                 } else {
                     this.areas[this.item].item.funcStandby(this);
                 }
@@ -579,6 +571,21 @@ function initBoard(div) {
            toastr.remove();
            toastr["info"](msg);
         };
+    };
+
+    that.displayScore = function() {
+        toastr.remove();
+        toastr.info(
+            "<span style='font-weight:"
+            + this.areas[this.item].item.bold
+            + "; color:"
+            + this.areas[this.item].item.color
+            + "; font-size: 125%;'>"
+            + this.areas[this.item].item.symbol
+            + "</span> "
+            + this.areas[this.item].item.name + "<br/>"
+            + "score: " + this.score.toString(), "",
+            {positionClass: "toast-top-center"});
     };
     
     that.getBoardCell = function(x,y) {
