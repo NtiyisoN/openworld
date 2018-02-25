@@ -381,7 +381,7 @@ function initBoard(div) {
         this.getBoardCell(0,0).refreshDisplay();
         toastr.remove();
         toastr.info(msg
-                     + "<br/><br/>"
+                     + "<br/>"
                      + "Score: " + this.score.toString()
                      + "<br/><br/>"
                      + "<span onclick='$(\"#menu\").popup(\"open\");"
@@ -576,7 +576,8 @@ function initBoard(div) {
     that.displayScore = function() {
         toastr.remove();
         toastr.info(
-            "<span style='font-weight:"
+            "<div style=\"margin:0; padding:0; text-align: center;\">"
+            + "<span style='font-weight:"
             + this.areas[this.item].item.bold
             + "; color:"
             + this.areas[this.item].item.color
@@ -584,7 +585,7 @@ function initBoard(div) {
             + this.areas[this.item].item.symbol
             + "</span> "
             + this.areas[this.item].item.name + "<br/>"
-            + "score: " + this.score.toString(), "",
+            + "Score: " + this.score.toString() + "</div>", "",
             {positionClass: "toast-top-center"});
     };
     
