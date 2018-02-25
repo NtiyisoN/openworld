@@ -12,7 +12,7 @@ body {
 
 .areaName { color: #e6e600; }
 .obstacleName { color: #33cc33; }
-.monsterName { color: #b3003b; }
+.monsterName { color: #e65c00; }
 .itemName { color: #b3e6ff; }
 
 #game, #debugExt {
@@ -23,13 +23,18 @@ body {
     width: 100%;
 }
 
+#menu {
+    text-align: center;
+}
+
 #menu h1 {
+    color: #cfc;
     font-size: large;
 }
 #menu p {
     font-size: small;
 }
-#menu #startButton {
+#menu h3 a {
     color: #cfc;
 }
 

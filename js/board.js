@@ -348,8 +348,10 @@ function initBoard(div) {
 
     // Warning: (x,y) is the new position of the player (before
     // redrawing the map)!
+    // Warning: reversed order in case a monster wants to self.destroy
+    // (avoid potential bug in monster index)
     that.moveMonsters = function(x,y) {
-        for(var i=0; i<this.monsters.length; i++) {
+        for(var i=this.monsters.length-1; i>=0; i--) {
             var c = this.monsters[i];
             var [nx,ny] = this.areas[c.monster].monsterMove(this,c,x,y);
             if ((nx != c.x)||(ny != c.y)) {
@@ -373,7 +375,7 @@ function initBoard(div) {
                      + "<span onclick='$(\"#menu\").popup(\"open\");"
                      + " toastr.remove();"
                      + " setTimeout(newGame,500);'"
-                     + " style=\"color: yellow;\">"
+                     + " style=\"color: #cfc;\">"
                      + restart + "</span>",
                     "", {
                         timeOut: 0,

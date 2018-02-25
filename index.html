@@ -17,8 +17,8 @@
 <script type="text/javascript">
   function newGame() {
       $("#menu").popup();
-      $("#menu").popup("open");
       initBoard(document.getElementById("board"));
+      setTimeout(function() {$("#menu").popup("open");}, 350);
   };
 </script>
 </head>
@@ -33,8 +33,8 @@
           data-theme="b" data-overlay-theme="b">
           <h1>Openworld Roguelike Survival</h1>
           <p>using the <i>Openworld</i> game engine<br/>
-             https://github.com/baruchel/openworld</p>
-          <h3 id="startButton" onclick='$("#menu").popup("close");'>Start</h3>
+          <span style="font-size: x-small">https://github.com/baruchel/openworld</span></p>
+          <h3><a href="#" data-rel="back" data-role="button">Play</a></h3>
       </div>
       <!-- end of menu -->
     </div>
