@@ -371,7 +371,8 @@ function initBoard(div) {
         toastr.remove();
         toastr.info(msg
                      + "<br/><br/>"
-                     + "<span onclick='window.location.href=\"#home\";"
+                     //+ "<span onclick='window.location.href=\"#home\";"
+                     + "<span onclick='$(\"#menu\").popup(\"open\");"
                      + " setTimeout(newGame,500);'"
                      + "   style=\"color: yellow;\">"
                      + restart + "</span>",

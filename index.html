@@ -16,20 +16,27 @@
     <link rel="stylesheet" type="text/css" href="css/openworld.css">
 <script type="text/javascript">
   function newGame() {
+      $("#menu").popup();
+      $("#menu").popup("open");
       initBoard(document.getElementById("board"));
   };
 </script>
 </head>
 <body onload="newGame();">
 
-  <div id="home" data-role="page" data-theme="b">
-      Hello world!<br/>
-      <a href="#game">Play</a>
-  </div>
-
   <div id="game" data-role="page" data-theme="b">
     <div class="divExt">
+      <!-- main part -->
       <div id="board"></div>
+      <!-- menu -->
+      <div data-role="popup" id ="menu" class="ui-content"
+          data-theme="b" data-overlay-theme="b">
+          <h1>Openworld Roguelike Survival</h1>
+          <p>using the <i>Openworld</i> game engine<br/>
+             https://github.com/baruchel/openworld</p>
+          <h3 id="startButton" onclick='$("#menu").popup("close");'>Start</h3>
+      </div>
+      <!-- end of menu -->
     </div>
   </div>
 
