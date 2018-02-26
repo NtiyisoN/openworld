@@ -432,6 +432,11 @@ function initBoard(div) {
             return (e.monster===false)&&(e.obstacle===false);
         });
     };
+    that.monstersAround = function(c) {
+        return this.visibleAround(c).filter(function (e) {
+            return (e.monster!==false);
+        });
+    };
             
     that.click = function(x,y) {
         if (this.character.alive) {
@@ -475,118 +480,102 @@ function initBoard(div) {
                         this.areaTurns[this.getBoardCell(0,0).area]++;
                         this.moveMonsters(0,0);
                     }
-                } else if( (this.getBoardCell(x-1,y-1).monster !== false)
-                        || (this.getBoardCell(x,y-1).monster !== false)
-                        || (this.getBoardCell(x+1,y-1).monster !== false)
-                        || (this.getBoardCell(x-1,y).monster !== false)
-                        || (this.getBoardCell(x+1,y).monster !== false)
-                        || (this.getBoardCell(x-1,y+1).monster !== false)
-                        || (this.getBoardCell(x,y+1).monster !== false)
-                        || (this.getBoardCell(x+1,y+1).monster !== false) ) {
-                    var monsters = [];
-                    if (this.getBoardCell(x-1,y-1).monster !== false)
-                        { monsters.push(this.getBoardCell(x-1,y-1)); }
-                    if (this.getBoardCell(x,y-1).monster !== false)
-                        { monsters.push(this.getBoardCell(x,y-1)); }
-                    if (this.getBoardCell(x+1,y-1).monster !== false)
-                        { monsters.push(this.getBoardCell(x+1,y-1)); }
-                    if (this.getBoardCell(x-1,y).monster !== false)
-                        { monsters.push(this.getBoardCell(x-1,y)); }
-                    if (this.getBoardCell(x+1,y).monster !== false)
-                        { monsters.push(this.getBoardCell(x+1,y)); }
-                    if (this.getBoardCell(x-1,y+1).monster !== false)
-                        { monsters.push(this.getBoardCell(x-1,y+1)); }
-                    if (this.getBoardCell(x,y+1).monster !== false)
-                        { monsters.push(this.getBoardCell(x,y+1)); }
-                    if (this.getBoardCell(x+1,y+1).monster !== false)
-                        { monsters.push(this.getBoardCell(x+1,y+1)); }
-                    if(!(this.areas[this.item]
-                             .item.funcAttacked(this, c, monsters))) {
-                        var i = Math.floor(Math.random()*(monsters.length));
-                        this.story += this.areas[monsters[i].monster]
-                                          .monster.msg;
-                    } else {
+                } else {
+                    // all monsters nearby
+                    var monsters = this.monstersAround(this.getBoardCell(x,y));
+                    // dangerous monsters nearby
+                    var monsters2 = monsters.filter(function (e) {
+                           return false === this.areas[e.monster]
+                                   .monster.allowContiguous(this,e,x,y); });
+                    if (monsters2.length > 0) {
+                        if(this.areas[this.item]
+                                 .item.funcAttacked(this, c, monsters2)) {
+                            this.areaTurns[this.getBoardCell(0,0).area]++;
+                            this.moveMonsters(0,0);
+                        } else {
+                            var i = Math.floor(Math.random()*(monsters2.length));
+                            this.story += this.areas[monsters2[i].monster]
+                                              .monster.msg;
+                        }
+                    } else 
+                        // Test first itemFuncEmpty
+                        if(!(this.areas[this.item].item.funcEmpty(this, c))) {
+                        // move Monsters
+                        this.moveMonsters(x,y);
+                        this.monsters = []; // refresh monster list below
+                        // Move
+                        this.geometry.move(x,y);
+                        var idx, idy;
+                        if(x >= 0) { idx = new Array(2*boardHalfSize+1)
+                                        .fill().map(function(e,i) {
+                                            return i-boardHalfSize; }); }
+                        else       { idx = new Array(2*boardHalfSize+1)
+                                        .fill().map(function(e,i) {
+                                            return boardHalfSize-i; }); }
+                        if(y >= 0) { idy = new Array(2*boardHalfSize+1)
+                                        .fill().map(function(e,i) {
+                                            return i-boardHalfSize; }); }
+                        else       { idy = new Array(2*boardHalfSize+1)
+                                        .fill().map(function(e,i) {
+                                            return boardHalfSize-i; }); }
+                        for(var i=0; i<2*boardHalfSize+1;i++) {
+                            var myy = idy[i];
+                            var oy = myy + y;
+                            for(var j=0; j<2*boardHalfSize+1;j++) {
+                                var myx = idx[j];
+                                if((Math.abs(myy)==boardHalfSize) // hidden corners
+                                     &&(Math.abs(myx)==boardHalfSize)) {
+                                    continue;
+                                }
+                                c = this.getBoardCell(myx,myy);
+                                var ox = myx + x;
+                                if((Math.abs(oy)>boardHalfSize) // border
+                                    || (Math.abs(ox)>boardHalfSize)
+                                    || ((Math.abs(oy)==boardHalfSize) // hidden corners
+                                     &&(Math.abs(ox)==boardHalfSize))) {
+                                    // compute incoming cell
+                                    c.area = this.geometry.getAreaRelative(myx,myy);
+                                    if (this.areas[c.area].obstacle.check(this, c)) {
+                                        c.obstacle = true;
+                                        c.monster = false;
+                                        c.item = false;
+                                    } else {
+                                        c.obstacle = false;
+                                        if (Math.random()
+                                            < this.areas[c.area]
+                                                .monster.probability(this, c)) {
+                                            c.monster = c.area;
+                                        } else { c.monster = false; }
+                                        if (Math.random()
+                                            < this.areas[c.area]
+                                                .item.probability(this, c)) {
+                                            c.item = true;
+                                        } else { c.item = false; }
+                                    }
+                                } else { // normal case
+                                    var oc = this.getBoardCell(ox,oy);
+                                    c.area = oc.area;
+                                    c.obstacle = oc.obstacle;
+                                    c.item = oc.item;
+                                    c.monster = oc.monster;
+                                }
+                                if(c.monster !== false) { this.monsters.push(c); }
+                                c.refreshDisplay();
+                            }
+                        }
+                        c = this.getBoardCell(0,0);
+                        if(this.areaTurns[c.area]==0) {
+                            this.story += this.areas[c.area].desc;
+                        }
+                        this.areaTurns[c.area]++;
+                        if(c.item) {
+                            this.story += this.areas[c.area].item.msg + "<br/>";
+                            this.story += this.areas[c.area].item.desc;
+                        }
+                    } else { // itemFuncEmpty worked!
                         this.areaTurns[this.getBoardCell(0,0).area]++;
                         this.moveMonsters(0,0);
                     }
-                } else 
-                    // Test first itemFuncEmpty
-                    if(!(this.areas[this.item].item.funcEmpty(this, c))) {
-                    // move Monsters
-                    this.moveMonsters(x,y);
-                    this.monsters = []; // refresh monster list below
-                    // Move
-                    this.geometry.move(x,y);
-                    var idx, idy;
-                    if(x >= 0) { idx = new Array(2*boardHalfSize+1)
-                                    .fill().map(function(e,i) {
-                                        return i-boardHalfSize; }); }
-                    else       { idx = new Array(2*boardHalfSize+1)
-                                    .fill().map(function(e,i) {
-                                        return boardHalfSize-i; }); }
-                    if(y >= 0) { idy = new Array(2*boardHalfSize+1)
-                                    .fill().map(function(e,i) {
-                                        return i-boardHalfSize; }); }
-                    else       { idy = new Array(2*boardHalfSize+1)
-                                    .fill().map(function(e,i) {
-                                        return boardHalfSize-i; }); }
-                    for(var i=0; i<2*boardHalfSize+1;i++) {
-                        var myy = idy[i];
-                        var oy = myy + y;
-                        for(var j=0; j<2*boardHalfSize+1;j++) {
-                            var myx = idx[j];
-                            if((Math.abs(myy)==boardHalfSize) // hidden corners
-                                 &&(Math.abs(myx)==boardHalfSize)) {
-                                continue;
-                            }
-                            c = this.getBoardCell(myx,myy);
-                            var ox = myx + x;
-                            if((Math.abs(oy)>boardHalfSize) // border
-                                || (Math.abs(ox)>boardHalfSize)
-                                || ((Math.abs(oy)==boardHalfSize) // hidden corners
-                                 &&(Math.abs(ox)==boardHalfSize))) {
-                                // compute incoming cell
-                                c.area = this.geometry.getAreaRelative(myx,myy);
-                                if (this.areas[c.area].obstacle.check(this, c)) {
-                                    c.obstacle = true;
-                                    c.monster = false;
-                                    c.item = false;
-                                } else {
-                                    c.obstacle = false;
-                                    if (Math.random()
-                                        < this.areas[c.area]
-                                            .monster.probability(this, c)) {
-                                        c.monster = c.area;
-                                    } else { c.monster = false; }
-                                    if (Math.random()
-                                        < this.areas[c.area]
-                                            .item.probability(this, c)) {
-                                        c.item = true;
-                                    } else { c.item = false; }
-                                }
-                            } else { // normal case
-                                var oc = this.getBoardCell(ox,oy);
-                                c.area = oc.area;
-                                c.obstacle = oc.obstacle;
-                                c.item = oc.item;
-                                c.monster = oc.monster;
-                            }
-                            if(c.monster !== false) { this.monsters.push(c); }
-                            c.refreshDisplay();
-                        }
-                    }
-                    c = this.getBoardCell(0,0);
-                    if(this.areaTurns[c.area]==0) {
-                        this.story += this.areas[c.area].desc;
-                    }
-                    this.areaTurns[c.area]++;
-                    if(c.item) {
-                        this.story += this.areas[c.area].item.msg + "<br/>";
-                        this.story += this.areas[c.area].item.desc;
-                    }
-                } else { // itemFuncEmpty worked!
-                    this.areaTurns[this.getBoardCell(0,0).area]++;
-                    this.moveMonsters(0,0);
                 }
             }
             // TODO shuffle monsters (priorité mouvement)
