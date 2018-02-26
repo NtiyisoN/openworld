@@ -112,7 +112,6 @@ areas = (function() {
      obstacle: {
        symbol: "\u00a5", // yen
        color: "#77b300",
-       bold: "normal",
        msg: "You cannot walk on this <span class='obstacleName'>tree</span>!",
        elements: ["vegetal"],
        check: basicObstacleProbability(11)
@@ -120,7 +119,6 @@ areas = (function() {
      monster: {
        symbol: "d",
        color: "#930",
-       bold: "normal",
        msg: "The <span class='monsterName'>fox</span> would kill you!",
        kill: "You killed the <span class='monsterName'>fox</span>!",
        elements: ["mammal", "animal"],
@@ -131,7 +129,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#c90",
-       bold: "normal",
        name: "Sign of Earth",
        msg: "You found the <span class='itemName'>sign of Earth</span>!",
        desc: "Use it for killing some common creatures.",
@@ -165,7 +162,6 @@ areas = (function() {
      obstacle: {
        symbol: "~",
        color: "#09f",
-       bold: "normal",
        msg: "You cannot walk in the <span class='areaName'>water</span>!",
        elements: ["unwalkable"],
        check: basicObstacleProbability(1)
@@ -173,7 +169,6 @@ areas = (function() {
      monster: {
        symbol: "~",
        color: "#09f",
-       bold: "normal",
        msg: "",
        kill: "",
        elements: ["unwalkable"],
@@ -184,7 +179,6 @@ areas = (function() {
      item: {
        symbol: "\u00a0",
        color: "#09f",
-       bold: "normal",
        name: "",
        msg: "",
        desc: "",
@@ -211,7 +205,6 @@ areas = (function() {
      obstacle: {
        symbol: "\u00a5", // yen
        color: "#690",
-       bold: "normal",
        msg: "You cannot walk on this <span class='obstacleName'>tree</span>!",
        elements: ["vegetal"],
        check: basicObstacleProbability(2)
@@ -219,7 +212,6 @@ areas = (function() {
      monster: {
        symbol: "d",
        color: "#c0c0c0",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: ["mammal", "animal"],
@@ -230,7 +222,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#b38600",
-       bold: "normal",
        name: "Sign of Darkness",
        msg: "You found the <span class='itemName'>sign of Darkness</span>!",
        desc: "Use it for killing various creatures.",
@@ -264,7 +255,6 @@ areas = (function() {
      obstacle: {
        symbol: "\u0448",
        color: "#00cc7a",
-       bold: "normal",
        msg: "You cannot walk on this <span class='obstacleName'>bush</span>!",
        elements: ["vegetal"],
        check: basicObstacleProbability(20)
@@ -272,7 +262,6 @@ areas = (function() {
      monster: {
        symbol: "s",
        color: "#008080",
-       bold: "normal",
        msg: "The <span class='monsterName'>giant eel</span> would kill you!",
        kill: "You killed the <span class='monsterName'>giant eel</span>!",
        elements: ["animal", "fish", "snake"],
@@ -283,7 +272,6 @@ areas = (function() {
      item: {
        symbol: "\u25ca",
        color: "#099",
-       bold: "normal",
        name: "Sign of Deep Water",
        msg: "You found the <span class='itemName'>sign of Deep Water</span>!",
        desc: "Use it for TODO.", // TODO
@@ -317,7 +305,6 @@ areas = (function() {
      obstacle: {
        symbol: "\u25b2",
        color: "#cc0",
-       bold: "normal",
        msg: "You cannot walk on this huge <span class='obstacleName'>rock</span>!",
        elements: ["mineral"],
        check: basicObstacleProbability(18)
@@ -325,7 +312,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#ffbf80",
-       bold: "normal",
        msg: "The <span class='monsterName'>giant worm</span> would kill you!",
        kill: "You killed the <span class='monsterName'>giant worm</span>!",
        elements: ["animal", "worm"],
@@ -337,7 +323,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#ffbf00",
-       bold: "normal",
        name: "Sign of Stone",
        msg: "You found the <span class='itemName'>sign of Stone</span>!",
        desc: "Use it for killing various creatures and break stones.",
@@ -379,7 +364,6 @@ areas = (function() {
      obstacle: {
        symbol: "\u25b2",
        color: "#c00",
-       bold: "normal",
        msg: "You cannot walk on this huge <span class='obstacleName'>rock</span>!",
        elements: ["mineral"],
        check: basicObstacleProbability(2)
@@ -387,7 +371,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#ff8000",
-       bold: "normal",
        msg: "The <span class='monsterName'>giant worm</span> would kill you!",
        kill: "You killed the <span class='monsterName'>giant worm</span>!",
        elements: ["animal", "worm"],
@@ -398,7 +381,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#f33",
-       bold: "normal",
        name: "Sign of Fire",
        msg: "You found the <span class='itemName'>sign of Fire</span>!",
        desc: "Use it for killing wolves.", // TODO
@@ -440,7 +422,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#c66528",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: ["vegetal"],
        check: basicObstacleProbability(10)
@@ -448,7 +429,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#c66528",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: ["mammal"],
@@ -459,7 +439,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#c66528",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -486,7 +465,6 @@ areas = (function() {
      obstacle: {
        symbol: "\u2248", // two waves
        color: "#884",
-       bold: "normal",
        msg: "You cannot walk in this <span class='obstacleName'>swampy ditch</span>!",
        elements: ["water"],
        check: basicObstacleProbability(5)
@@ -494,7 +472,6 @@ areas = (function() {
      monster: {
        symbol: "s",
        color: "#aa5",
-       bold: "normal",
        msg: "The <span class='monsterName'>large snake</span> would kill you!",
        kill: "You killed the <span class='monsterName'>large snake</span>!",
        elements: ["animal", "snake"],
@@ -505,7 +482,6 @@ areas = (function() {
      item: {
        symbol: "\u25ca",
        color: "#86b300",
-       bold: "normal",
        name: "Sign of Dark Water",
        msg: "You found the <span class='itemName'>sign of Dark Water</span>!",
        desc: "Use it for killing wolves.",
@@ -532,7 +508,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#70a49f",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -540,7 +515,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#70a49f",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -551,7 +525,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#70a49f",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -578,7 +551,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#1b1809",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -586,7 +558,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#1b1809",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -597,7 +568,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#1b1809",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -624,7 +594,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#49e4d4",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -632,7 +601,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#49e4d4",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -643,7 +611,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#49e4d4",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -670,7 +637,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#b5a73a",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -678,7 +644,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#b5a73a",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -689,7 +654,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#b5a73a",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -716,7 +680,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#d48248",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -724,7 +687,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#d48248",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -735,7 +697,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#d48248",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -762,7 +723,6 @@ areas = (function() {
      obstacle: {
        symbol: "\u2248",
        color: "#c00",
-       bold: "normal",
        msg: "You cannot walk on this <span class='areaName'>boiling lava</span>!",
        elements: ["unwalkable"],
        check: basicObstacleProbability(1)
@@ -770,7 +730,6 @@ areas = (function() {
      monster: {
        symbol: "",
        color: "#c00",
-       bold: "normal",
        msg: "",
        kill: "",
        elements: ["unwalkable"],
@@ -781,7 +740,6 @@ areas = (function() {
      item: {
        symbol: "",
        color: "#c00",
-       bold: "normal",
        name: "",
        msg: "",
        desc: "",
@@ -808,7 +766,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#3b7168",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -816,7 +773,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#3b7168",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -827,7 +783,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#3b7168",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -854,7 +809,6 @@ areas = (function() {
      obstacle: {
        symbol: "\u2248",
        color: "#606",
-       bold: "normal",
        msg: "The <span class='areaName'>poisoned vapors</span> would kill you!",
        elements: ["unwalkable"],
        check: basicObstacleProbability(0)
@@ -862,7 +816,6 @@ areas = (function() {
      monster: {
        symbol: "\u2248", // two waves
        color: "#606",
-       bold: "normal",
        msg: "The <span class='areaName'>poisoned vapors</span> would kill you!",
        kill: "",
        elements: ["unwalkable"],
@@ -873,7 +826,6 @@ areas = (function() {
      item: {
        symbol: "\u2248",
        color: "#606",
-       bold: "normal",
        name: "",
        msg: "",
        desc: "",
@@ -900,7 +852,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#e6f646",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -908,7 +859,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#e6f646",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -919,7 +869,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#e6f646",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -946,7 +895,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#ea34e1",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -954,7 +902,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#ea34e1",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -965,7 +912,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#ea34e1",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -992,7 +938,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#708e0e",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1000,7 +945,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#708e0e",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1011,7 +955,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#708e0e",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1038,7 +981,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#4b1016",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1046,7 +988,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#4b1016",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1057,7 +998,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#4b1016",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1084,7 +1024,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#d6243e",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1092,7 +1031,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#d6243e",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1103,7 +1041,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#d6243e",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1130,7 +1067,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#81af81",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1138,7 +1074,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#81af81",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1149,7 +1084,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#81af81",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1176,7 +1110,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#9b57e4",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1184,7 +1117,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#9b57e4",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1195,7 +1127,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#9b57e4",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1222,7 +1153,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#382cfe",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1230,7 +1160,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#382cfe",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1241,7 +1170,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#382cfe",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1268,7 +1196,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#523a73",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1276,7 +1203,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#523a73",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1287,7 +1213,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#523a73",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1314,7 +1239,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#fb4c43",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1322,7 +1246,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#fb4c43",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1333,7 +1256,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#fb4c43",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1360,7 +1282,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#5eb8f2",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1368,7 +1289,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#5eb8f2",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1379,7 +1299,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#5eb8f2",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1406,7 +1325,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#463694",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1414,7 +1332,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#463694",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1425,7 +1342,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#463694",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1452,7 +1368,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#46235a",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1460,7 +1375,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#46235a",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1471,7 +1385,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#46235a",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1498,7 +1411,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#f3ddd4",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1506,7 +1418,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#f3ddd4",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1517,7 +1428,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#f3ddd4",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1544,7 +1454,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#8b9c77",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1552,7 +1461,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#8b9c77",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1563,7 +1471,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#8b9c77",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1590,7 +1497,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#b94976",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1598,7 +1504,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#b94976",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1609,7 +1514,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#b94976",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1636,7 +1540,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#9b5e4c",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1644,7 +1547,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#9b5e4c",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1655,7 +1557,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#9b5e4c",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1682,7 +1583,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#a01528",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1690,7 +1590,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#a01528",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1701,7 +1600,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#a01528",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1728,7 +1626,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#460418",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1736,7 +1633,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#460418",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1747,7 +1643,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#460418",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1774,7 +1669,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#4057e8",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1782,7 +1676,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#4057e8",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1793,7 +1686,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#4057e8",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1820,7 +1712,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#59ec11",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1828,7 +1719,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#59ec11",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1839,7 +1729,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#59ec11",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1866,7 +1755,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#a88d78",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1874,7 +1762,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#a88d78",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1885,7 +1772,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#a88d78",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1912,7 +1798,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#dedd83",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1920,7 +1805,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#dedd83",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1931,7 +1815,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#dedd83",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -1958,7 +1841,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#bbd35a",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -1966,7 +1848,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#bbd35a",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -1977,7 +1858,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#bbd35a",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2004,7 +1884,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#139bf8",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2012,7 +1891,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#139bf8",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2023,7 +1901,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#139bf8",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2050,7 +1927,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#fa98d7",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2058,7 +1934,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#fa98d7",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2069,7 +1944,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#fa98d7",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2096,7 +1970,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#6ad52f",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2104,7 +1977,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#6ad52f",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2115,7 +1987,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#6ad52f",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2142,7 +2013,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#dfa738",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2150,7 +2020,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#dfa738",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2161,7 +2030,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#dfa738",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2188,7 +2056,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#43ece9",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2196,7 +2063,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#43ece9",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2207,7 +2073,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#43ece9",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2234,7 +2099,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#f91ae5",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2242,7 +2106,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#f91ae5",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2253,7 +2116,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#f91ae5",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2280,7 +2142,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#8712a4",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2288,7 +2149,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#8712a4",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2299,7 +2159,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#8712a4",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2326,7 +2185,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#239007",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2334,7 +2192,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#239007",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2345,7 +2202,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#239007",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2372,7 +2228,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#945abb",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2380,7 +2235,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#945abb",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2391,7 +2245,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#945abb",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2418,7 +2271,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#d808e4",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2426,7 +2278,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#d808e4",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2437,7 +2288,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#d808e4",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2464,7 +2314,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#cdc151",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2472,7 +2321,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#cdc151",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2483,7 +2331,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#cdc151",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2510,7 +2357,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#0878b8",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2518,7 +2364,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#0878b8",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2529,7 +2374,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#0878b8",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2556,7 +2400,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#f3a09d",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2564,7 +2407,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#f3a09d",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2575,7 +2417,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#f3a09d",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2602,7 +2443,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#8f099c",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2610,7 +2450,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#8f099c",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2621,7 +2460,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#8f099c",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2648,7 +2486,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#119fc7",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2656,7 +2493,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#119fc7",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2667,7 +2503,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#119fc7",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2694,7 +2529,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#7c6cee",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2702,7 +2536,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#7c6cee",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2713,7 +2546,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#7c6cee",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2740,7 +2572,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#94f971",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2748,7 +2579,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#94f971",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2759,7 +2589,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#94f971",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2786,7 +2615,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#fa29e0",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2794,7 +2622,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#fa29e0",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2805,7 +2632,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#fa29e0",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2832,7 +2658,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#4ed50f",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2840,7 +2665,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#4ed50f",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2851,7 +2675,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#4ed50f",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2878,7 +2701,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#6bbce0",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2886,7 +2708,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#6bbce0",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2897,7 +2718,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#6bbce0",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2924,7 +2744,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#7e6ba3",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2932,7 +2751,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#7e6ba3",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2943,7 +2761,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#7e6ba3",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -2970,7 +2787,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#b5e772",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -2978,7 +2794,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#b5e772",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -2989,7 +2804,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#b5e772",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -3016,7 +2830,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#e292ed",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -3024,7 +2837,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#e292ed",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -3035,7 +2847,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#e292ed",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -3062,7 +2873,6 @@ areas = (function() {
      obstacle: {
        symbol: "Y",
        color: "#01329b",
-       bold: "normal",
        msg: "You cannot walk on a <span class='obstacleName'>tree</span>!",
        elements: "vegetal",
        check: basicObstacleProbability(10)
@@ -3070,7 +2880,6 @@ areas = (function() {
      monster: {
        symbol: "w",
        color: "#01329b",
-       bold: "normal",
        msg: "The <span class='monsterName'>wolf</span> would kill you!",
        kill: "You killed the <span class='monsterName'>wolf</span>!",
        elements: "mammal",
@@ -3081,7 +2890,6 @@ areas = (function() {
      item: {
        symbol: "\u25c9",
        color: "#01329b",
-       bold: "normal",
        name: "Sign of earth",
        msg: "You found the <span class='itemName'>sign of earth</span>!",
        desc: "Use it for killing wolves.",
@@ -3099,13 +2907,11 @@ areas = (function() {
      debug: true,
      monster: { // Main character of the game (player)
          symbol: "@",
-         color:"#fff",
-         bold: "bold"
+         color:"#fff"
      },
      item: {
        symbol: "\u00a0",
        color: "#ff0",
-       bold: "normal",
        name: "",
        msg: "",
        desc: "",

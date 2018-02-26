@@ -154,8 +154,7 @@ function initBoard(div) {
     that.character = {
       alive: true,
       symbol: areas[64].monster.symbol,
-      color: areas[64].monster.color,
-      bold: areas[64].monster.bold
+      color: areas[64].monster.color
     };
     that.monsters = [];
     that.score = 0;
@@ -228,40 +227,34 @@ function initBoard(div) {
 
             c.style.fontWeight = "normal";
 
-            cell.update = function (symbol, color, bold) {
+            cell.update = function (symbol, color) {
                 this.DOM.textContent = symbol;
                 this.DOM.style.color = color;
-                this.DOM.style.fontWeight = bold;
             };
             cell.refreshDisplay = function () {
                 if((this.x==0)&&(this.y==0)) {
                     if(!(that.character.alive)) { this.item = false; }
                     if(this.item) {
-                        this.update(that.character.symbol,
-                                "#111", that.character.bold);
+                        this.update(that.character.symbol, "#111");
                         this.DOM.style.backgroundColor =
                              that.areas[this.area].item.color;
                     } else {
                         this.update(that.character.symbol,
-                                that.character.color, that.character.bold);
+                                    that.character.color);
                         this.DOM.style.backgroundColor = "initial";
                     }
                 } else if (this.obstacle) {
                     this.update(that.areas[this.area].obstacle.symbol,
-                             that.areas[this.area].obstacle.color,
-                             that.areas[this.area].obstacle.bold);
+                             that.areas[this.area].obstacle.color);
                 } else if (this.monster !== false) {
                     this.update(that.areas[this.monster].monster.symbol,
-                             that.areas[this.monster].monster.color,
-                             that.areas[this.monster].monster.bold);
+                             that.areas[this.monster].monster.color);
                 } else if (this.item) {
                     this.update(that.areas[this.area].item.symbol,
-                             that.areas[this.area].item.color,
-                             that.areas[this.area].item.bold);
+                             that.areas[this.area].item.color);
                 } else {
                     this.update(that.areas[this.area].symbol,
-                             that.areas[this.area].color,
-                             that.areas[this.area].bold);
+                             that.areas[this.area].color);
                 }
             };
 
@@ -612,9 +605,7 @@ function initBoard(div) {
         toastr.remove();
         toastr.info(
             "<div style=\"margin:0; padding:0; text-align: center;\">"
-            + "<span style='font-weight:"
-            + this.areas[this.item].item.bold
-            + "; color:"
+            + "<span style='color:"
             + this.areas[this.item].item.color
             + "; font-size: 125%;'>"
             + this.areas[this.item].item.symbol
