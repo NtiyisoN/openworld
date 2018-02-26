@@ -481,20 +481,19 @@ function initBoard(div) {
                         this.moveMonsters(0,0);
                     }
                 } else {
-                    // all monsters nearby
-                    var monsters = this.monstersAround(this.getBoardCell(x,y));
-                    // dangerous monsters nearby
-                    var monsters2 = monsters.filter(function (e) {
-                           return false === this.areas[e.monster]
+                    // all _dangerous_ monsters nearby
+                    var monsters = this.monstersAround(this.getBoardCell(x,y))
+                             .filter(function (e) {
+                                return false === this.areas[e.monster]
                                    .monster.allowContiguous(this,e,x,y); });
-                    if (monsters2.length > 0) {
+                    if (monsters.length > 0) {
                         if(this.areas[this.item]
-                                 .item.funcAttacked(this, c, monsters2)) {
+                                 .item.funcAttacked(this, c, monsters)) {
                             this.areaTurns[this.getBoardCell(0,0).area]++;
                             this.moveMonsters(0,0);
                         } else {
-                            var i = Math.floor(Math.random()*(monsters2.length));
-                            this.story += this.areas[monsters2[i].monster]
+                            var i = Math.floor(Math.random()*(monsters.length));
+                            this.story += this.areas[monsters[i].monster]
                                               .monster.msg;
                         }
                     } else 
@@ -596,7 +595,7 @@ function initBoard(div) {
             "<div style=\"margin:0; padding:0; text-align: center;\">"
             + "<span style='color:"
             + this.areas[this.item].item.color
-            + "; font-size: 125%;'>"
+            + "; font-size: 125%; vertical-align: -5%;'>"
             + this.areas[this.item].item.symbol
             + "</span> "
             + this.areas[this.item].item.name + "<br/>"
