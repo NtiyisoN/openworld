@@ -43,11 +43,12 @@ areas = (function() {
                 var disp = G.emptyAround(c);
                 if(Math.random() < z) { targets = disp; }
                 else {
-                for(var i=0;i<disp.length;i++) {
-                    var dd2 = Math.max(Math.abs(disp[i].x-tx), Math.abs(disp[i].y-ty));
-                    if (dd2<dd) { dd = dd2; targets = [disp[i]]; }
-                    else if(dd2==dd) { targets.push(disp[i]); }
-                }
+                    for(var i=0;i<disp.length;i++) {
+                        var dd2 = Math.max(Math.abs(disp[i].x-tx),
+                                           Math.abs(disp[i].y-ty));
+                        if (dd2<dd) { dd = dd2; targets = [disp[i]]; }
+                        else if(dd2==dd) { targets.push(disp[i]); }
+                    }
                 }
             }
             var t = targets[Math.floor(Math.random()*targets.length)];
@@ -68,11 +69,12 @@ areas = (function() {
                         function (e) { return ar.includes(e.area) });
                 if(Math.random() < z) { targets = disp; }
                 else {
-                for(var i=0;i<disp.length;i++) {
-                    var dd2 = Math.max(Math.abs(disp[i].x-tx), Math.abs(disp[i].y-ty));
-                    if (dd2<dd) { dd = dd2; targets = [disp[i]]; }
-                    else if(dd2==dd) { targets.push(disp[i]); }
-                }
+                    for(var i=0;i<disp.length;i++) {
+                        var dd2 = Math.max(Math.abs(disp[i].x-tx),
+                                           Math.abs(disp[i].y-ty));
+                        if (dd2<dd) { dd = dd2; targets = [disp[i]]; }
+                        else if(dd2==dd) { targets.push(disp[i]); }
+                    }
                 }
             }
             var t = targets[Math.floor(Math.random()*targets.length)];

@@ -157,6 +157,7 @@ function initBoard(div) {
       color: areas[64].monster.color
     };
     that.monsters = [];
+    that.killedMonsters = [];
     that.score = 0;
 
     that.areaTurns = (new Array(areas.length)).fill(0);
@@ -227,6 +228,9 @@ function initBoard(div) {
 
             c.style.fontWeight = "normal";
 
+            cell.killMonster = function () {
+                that.killedMonsters.push(this);
+            };
             cell.update = function (symbol, color) {
                 this.DOM.textContent = symbol;
                 this.DOM.style.color = color;
@@ -354,7 +358,8 @@ function initBoard(div) {
     // Warning: reversed order in case a monster wants to self.destroy
     // (avoid potential bug in monster index)
     that.moveMonsters = function(x,y) {
-        for(var i=this.monsters.length-1; i>=0; i--) {
+        //for(var i=this.monsters.length-1; i>=0; i--) {
+        for(var i=0; i<this.monsters.length; i++) {
             var c = this.monsters[i];
             var [nx,ny] = this.areas[c.monster].monster.move(this,c,x,y);
             if ((nx != c.x)||(ny != c.y)) {
@@ -390,6 +395,10 @@ function initBoard(div) {
 
     };
 
+    // Warning: never call this function form moveMonsters step
+    // (a monster self-killing itself or a monster/ally killing another
+    // monster should use c.killMonster() instead
+    // but when the player kills a monster, this function has to be called).
     that.destroyMonster = function(c) {
         var i = this.monsters.indexOf(c);
         this.monsters.splice(i,1);
@@ -440,6 +449,7 @@ function initBoard(div) {
             
     that.click = function(x,y) {
         if (this.character.alive) {
+            this.killedMonsters = [];
             this.story = "";
             if((x==0)&&(y==0)) {
                 // standby + pickup item + itemStandby
@@ -492,6 +502,9 @@ function initBoard(div) {
                             this.areaTurns[this.getBoardCell(0,0).area]++;
                             this.moveMonsters(0,0);
                         } else {
+                            // TODO: maybe replace  +=  by = in case some
+                            // monsters would have set story at .allowContiguous step
+                            // (but at least one dangerous monster would be remaining)
                             var i = Math.floor(Math.random()*(monsters.length));
                             this.story += this.areas[monsters[i].monster]
                                               .monster.msg;
@@ -579,6 +592,9 @@ function initBoard(div) {
             }
             // TODO shuffle monsters (priorité mouvement)
             this.setStory(this.story);
+            for(var i=0;i<this.killedMonsters.length;i++) {
+                this.destroyMonster(this.killedMonsters[i]);
+            }
         };
     };
 
@@ -600,7 +616,7 @@ function initBoard(div) {
             + "</span> "
             + this.areas[this.item].item.name + "<br/>"
             + "Score: " + this.score.toString() + "</div>", "",
-            {positionClass: "toast-top-center"});
+            {positionClass: "toast-top-center", timeOut: 3000});
     };
     
     that.getBoardCell = function(x,y) {
