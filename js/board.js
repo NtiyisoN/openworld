@@ -159,6 +159,7 @@ function initBoard(div) {
     that.monsters = [];
     that.killedMonsters = [];
     that.score = 0;
+    that.previousArea = -1;
 
     that.areaTurns = (new Array(areas.length)).fill(0);
     that.areaKills = (new Array(areas.length)).fill(0);
@@ -576,7 +577,8 @@ function initBoard(div) {
                             }
                         }
                         c = this.getBoardCell(0,0);
-                        if(this.areaTurns[c.area]==0) {
+                        if(c.area != this.previousArea) {
+                            this.previousArea = c.area;
                             this.story += this.areas[c.area].desc;
                         }
                         this.areaTurns[c.area]++;
