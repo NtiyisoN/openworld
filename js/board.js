@@ -34,6 +34,8 @@ function initGeometry () {
 
     // game stat (to be returned)
     var that = {};
+    that.x = 0;
+    that.y = 0;
 
     // current position
     that.currentCoords = new Array(6).fill(0.5);
@@ -109,6 +111,8 @@ function initGeometry () {
     that.move = function (x, y) {
         var vy = this.vecY;
         var vx = this.vecX;
+        this.x += x;
+        this.y += y;
         this.currentCoords =
             this.currentCoords.map(function(e,i) {
                     return e + y*vy[i] + x*vx[i]; })
@@ -359,8 +363,11 @@ function initBoard(div) {
     // Warning: reversed order in case a monster wants to self.destroy
     // (avoid potential bug in monster index)
     that.moveMonsters = function(x,y) {
+        // compute this.monsters.length first because this.monsters
+        // can increase in size if monsters generate new monsters
+        var ms = this.monsters.length;
         //for(var i=this.monsters.length-1; i>=0; i--) {
-        for(var i=0; i<this.monsters.length; i++) {
+        for(var i=0; i<ms; i++) {
             var c = this.monsters[i];
             var [nx,ny] = this.areas[c.monster].monster.move(this,c,x,y);
             if ((nx != c.x)||(ny != c.y)) {
@@ -578,11 +585,16 @@ function initBoard(div) {
                         }
                         c = this.getBoardCell(0,0);
                         if(c.area != this.previousArea) {
+                            //TODO: if not first time in the area, only
+                            //      add that to the story when no toastr is
+                            //      enabled at that moment
+                        //if(this.areaTurns[c.area]==0) {
                             this.previousArea = c.area;
                             this.story += this.areas[c.area].desc;
                         }
                         this.areaTurns[c.area]++;
                         if(c.item) {
+                            if (this.story) { this.story += "<br/>"; }
                             this.story += this.areas[c.area].item.msg + "<br/>";
                             this.story += this.areas[c.area].item.desc;
                         }
