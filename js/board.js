@@ -73,9 +73,8 @@ function initGeometry () {
         var G = this.areaGravity;
         var W = this.areaWeight;
         for(var n=0; n<64;n++) {
-            var m = Math.max(...(coords.map(function(e,i)
-                        { return e-G[n][i]; })
-                  .map(function(e) { return Math.min(
+            var m = Math.max(...(coords.map(function(e,i) { return e-G[n][i]; })
+                                       .map(function(e) { return Math.min(
                               Math.abs(e), Math.abs(2+e), Math.abs(e-2)); })))
                   * W[n]; // TODO: more logical to divide?
             if(m<dist) { r = n; dist = m; };
@@ -160,7 +159,6 @@ function initBoard(div) {
     };
     that.monsters = [];
     that.score = 0;
-    that.previousArea = -1;
 
     var boardHalfSize = 5; // TODO: adjust
     that.boardHalfSize = boardHalfSize;
@@ -263,8 +261,7 @@ function initBoard(div) {
         };
     };
 
-    /*
-    if(areas[64].debug) {
+    if(that.data.debug) {
     // delete all previous children
         div.appendChild(document.createElement("br"));
         var c = document.createElement("a");
@@ -274,18 +271,6 @@ function initBoard(div) {
         div.appendChild(c);
         c = document.getElementById("debug");
         while (c.hasChildNodes()) { c.removeChild(c.lastChild); }
-        that.debugSelect = document.createElement("select");
-        c.appendChild(that.debugSelect);
-        that.debugSelect.setAttribute("id", "itemSelect");
-        for(it=0;it<65;it++) {
-            var u = (it+64)%65;
-            var us = "item n° " + u.toString();
-            if(u==64) { us = "initial item"; }
-            var e = document.createElement("option");
-            e.innerHTML = "Play with " + us;
-            e.setAttribute("value",(u).toString());
-            that.debugSelect.appendChild(e);
-        }
         d = document.createElement("table");
         c.appendChild(d);
         for(var i=0;i<8;i++) {
@@ -308,15 +293,9 @@ function initBoard(div) {
                             s.push(0.5 + l%2);
                             l >>= 1;
                         };
-                        var u = that.debugSelect.selectedIndex;
-                        u = (u+64)%65;
-                        var us = "item n° " + u.toString();
-                        if(u==64) { us = "initial item"; }
-                        that.item = u;
                         that.geometry.currentCoords = s;
                         that.recomputeBoard();
-                        that.setStory("Loading area " + m.toString()
-                                + " with " + us + "\u2026");
+                        that.setStory("Loading area " + m.toString() + "\u2026");
                     };
                 })(n);
             }
@@ -327,9 +306,7 @@ function initBoard(div) {
         d.innerHTML = "return to game";
         c.appendChild(d);
     }
-    */
 
-    // TODO notification Toastr module
     toastr.options = {
       "closeButton": false,
       "debug": false,
@@ -540,14 +517,6 @@ function initBoard(div) {
                             }
                         }
                         c = this.getBoardCell(0,0);
-                        if(c.area != this.previousArea) {
-                            //TODO: if not first time in the area, only
-                            //      add that to the story when no toastr is
-                            //      enabled at that moment
-                        //if(this.areaTurns[c.area]==0) {
-                            this.previousArea = c.area;
-                            this.story += this.data.areas[c.area].desc;
-                        }
                         //this.areaTurns[c.area]++;
                     }
                 }

@@ -1,4 +1,7 @@
-window.data = {};
+window.data = { debug: true };
+
+// Functions of general interest
+// =============================
 
 var hamming = [0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4, 1, 2, 2, 3, 2,
                3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5, 1, 2, 2, 3, 2, 3, 3, 4, 2, 3,
@@ -14,53 +17,59 @@ function magicNumberAdd(G, c) { // more regular
                        .reduce(function(t,n) { return t+n; } ) * 65536);
 }
 
+// Game-related functions
+// ======================
+
+function vegetation(dens, arr) {
+    return function(G,c) {
+        var o = magicNumberMult(G,c);
+        if(o%dens) { return false; }
+        return arr[o%arr.length];
+    };
+}
+function buildings(dens, arr) {
+    return function(G,c) {
+        var o = magicNumberMult(G,c);
+        if(o%dens) { return false; }
+        return arr[o%arr.length];
+    };
+}
+
 function createArea(n) {
     return (function(d) {
             switch(d) {
                 case 0: // downtown
                     return {
                         symbol: "\u00b7", // middle point
-                        color: "#0059b3",
-                        desc: "This is <span class='areaName'>downtown area</span>.",
+                        color: "#066",
                         hamming: hamming[n],
-                        obstacleFunc: function(G,c) {
-                            var o = magicNumberAdd(G,c);
-                            if(o%4 != 0) { return false; }
-                            if(o%11 > 8) { return 8; }
-                            return 7;
-                        }
+                        obstacleFunc: buildings(4,[7,7,7,7,7,7,7,7,7,8,8])
                     };
                 case 1: // urban areas (n° 1, 2, 4, 8, 16, 32) + car park
                     return {
                         symbol: "\u00b7", // middle point
-                        color: "#444",
+                        color: "#066",
                         hamming: hamming[n],
-                        obstacleFunc: function(G,c) {
-                            return false; // TODO
-                        }
+                        obstacleFunc: buildings(8,[7,7,7,7,7,7,7,8,8])
                     };
                 case 2: // country + last houses + one area full of water
                     return {
                         symbol: "\u00b7", // middle point
-                        color: "#444",
+                        color: "#060",
                         hamming: hamming[n],
-                        obstacleFunc: function(G,c) {
-                            return false; // TODO
-                        }
+                        obstacleFunc: vegetation(14, [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,5,5,5,5,5,5,5,5,5,5,3,3,3,3,3,7])
                     };
                 case 3: // 
                     return {
                         symbol: "\u00b7", // middle point
-                        color: "#444",
+                        color: "#060",
                         hamming: hamming[n],
-                        obstacleFunc: function(G,c) {
-                            return false; // TODO
-                        }
+                        obstacleFunc: vegetation(8,[0])
                     };
                 case 4:
                     return {
                         symbol: "\u00b7", // middle point
-                        color: "#444",
+                        color: "#050",
                         hamming: hamming[n],
                         obstacleFunc: function(G,c) {
                             return false; // TODO
@@ -69,7 +78,7 @@ function createArea(n) {
                 case 5:
                     return {
                         symbol: "\u00b7", // middle point
-                        color: "#444",
+                        color: "#050",
                         hamming: hamming[n],
                         obstacleFunc: function(G,c) {
                             return false; // TODO
@@ -78,7 +87,7 @@ function createArea(n) {
                 case 6: // very deep forest
                     return {
                         symbol: "\u00b7", // middle point
-                        color: "#444",
+                        color: "#040",
                         hamming: hamming[n],
                         obstacleFunc: function(G,c) {
                             var o = magicNumberMult(G,c);
@@ -93,6 +102,12 @@ function createArea(n) {
 
 window.data.areas = new Array(64).fill(0).map(function (e,i) {
     return createArea(i); });
+
+// ad-hoc adjustments
+// area n° 32 is a car park
+window.data.areas[32].obstacleFunc = buildings(4, [8,8,8,8,8,8,8,8,8,8,8,8,8,8,6]);
+// area n° 3 is a lake
+window.data.areas[3].obstacleFunc = function(G,c) { return 9; }
 
 window.data.obstacles = [
     // ¥, Y, џ, Ұ, ұ, ↑
@@ -123,26 +138,26 @@ window.data.obstacles = [
     },
     { // obstacle n° 5 (bush)
       symbol: "\u045f", // џ
-      color: "#690",
+      color: "#558000",
       msg: "You cannot walk on this <span class='obstacleName'>bush</span>!"
     },
     { // obstacle n° 6 (bush)
       symbol: "\u0448", // ш
-      color: "#690",
+      color: "#86b300",
       msg: "You cannot walk on this <span class='obstacleName'>bush</span>!"
     },
     { // obstacle n° 7 (house)
       symbol: "\u2302", // ⌂
-      color: "#b3b300",
+      color: "#b3b3b3",
       msg: "You cannot walk enter this <span class='obstacleName'>house</span>!"
     },
     { // obstacle n° 8 (car)
-      symbol: "#", // #
-      color: "#cc0052",
+      symbol: "=", // =
+      color: "#930",
       msg: "You cannot walk on this <span class='obstacleName'>car</span>!"
     },
     { // obstacle n° 9 (water)
-      symbol: "~", // TODO: vs 2248 ≈
+      symbol: "\u2248",
       color: "#09f",
       msg: "You cannot walk on <span class='areaName'>water</span>!"
     }
